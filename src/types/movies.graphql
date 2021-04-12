@@ -1,0 +1,6 @@
+type Movie {
+  id: Id,
+  name: String,
+  year: Int,
+  genre: String,
+}
