@@ -1,5 +1,4 @@
-import { Args, Int, Resolver } from '@nestjs/graphql';
-import { Query } from 'mongoose';
+import { Args, Int, Resolver, Query } from '@nestjs/graphql';
 import { Movie } from './models/movie.model';
 import { MoviesService } from './movies.service';
 
@@ -7,6 +6,8 @@ import { MoviesService } from './movies.service';
 export class MoviesResolver {
   constructor(private readonly moviesService: MoviesService) {}
 
-  @Query((returns) => Movie)
-  async getAuthor(@Args('id', { type: () => Int }) id: string) {}
+  @Query((returns) => Movie, { name: 'movie' })
+  async getMovie(@Args('id', { type: () => Int }) id: string) {
+    return this.moviesService.getAllMovies();
+  }
 }

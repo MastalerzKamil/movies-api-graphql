@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
+export const movieSchemaToken = 'Movie';
+
 export type MovieDocument = Movie & Document;
 
 @Schema()
