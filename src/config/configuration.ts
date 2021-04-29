@@ -6,7 +6,7 @@ export default () => {
   const config = {
     nodeEnv: process.env.NODE_ENV,
     mongodb: {
-      uri: process.env.MONGODB_URI,
+      moviesApp: process.env.MONGODB_MOVIES_APP,
     },
   };
 

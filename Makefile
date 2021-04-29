@@ -1,17 +1,20 @@
-movies-api-id=$(shell docker ps -a -q -f "name=movies-api")
+movies-app-id=$(shell docker ps -a -q -f "name=movies-api")
 movies-mongo-id=$(shell docker ps -a -q -f "name=movies-mongo")
 
 build-all:
 	@docker-compose -f docker-compose.yml build
 
-run:
+up:
 	@docker-compose -f docker-compose.yml up -d
+
+stop-app:
+	@docker stop ${movies-app-id}
 
 stop:
 	@docker-compose stop
 
 rm-api:
-	@docker rm -f $(movies-api-id)
+	@docker rm -f $(movies-app-id)
 
 rm-mongo:
 	@docker rm -f $(movies-mongo-id)

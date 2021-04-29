@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  movies-api:
-    container_name: movies-api
-    image: movies-api:latest
+  movies-app:
+    container_name: movies-app
+    image: movies-app:latest
     build: .
     command: ["yarn", "start"]
     ports:
