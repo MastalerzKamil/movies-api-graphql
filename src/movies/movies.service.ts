@@ -19,4 +19,8 @@ export class MoviesService {
   async findByYear(year: number): Promise<Movie[]> {
     return await this.movieModel.find({ year }).exec();
   }
+
+  async findAll(): Promise<Movie[]> {
+    return await this.movieModel.find().exec();
+  }
 }
