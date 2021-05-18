@@ -19,7 +19,7 @@ rm-api:
 rm-mongo:
 	@docker rm -f $(movies-mongo-id)
 
-rm-all: rm-movies-api rm-mongo
+rm-all: rm-movies-app rm-mongo
 
 restart: stop run
 
