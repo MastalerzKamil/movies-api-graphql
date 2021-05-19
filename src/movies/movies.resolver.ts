@@ -18,7 +18,7 @@ export class MoviesResolver {
     return this.moviesService.findAll();
   }
 
-  @Mutation(() => [CreateMovieDto], { name: 'createMovie' })
+  @Mutation(() => CreateMovieDto, { name: 'createMovie' })
   async postMovie(@Args('input') input: CreateMovieInput) {
     return this.moviesService.create(input);
   }

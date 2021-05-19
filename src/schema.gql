@@ -15,7 +15,7 @@ type Query {
 }
 
 type Mutation {
-  createMovie(input: CreateMovieInput!): [CreateMovieDto!]!
+  createMovie(input: CreateMovieInput!): CreateMovieDto!
 }
 
 input CreateMovieInput {
