@@ -2,6 +2,25 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type CreateMovieDto {
+  id: ID
+  title: String!
+  year: Int!
+  description: String!
+}
+
 type Query {
   theMostRecommendedMovie: String!
+  allMovies: [CreateMovieDto!]!
+}
+
+type Mutation {
+  createMovie(input: CreateMovieInput!): [CreateMovieDto!]!
+}
+
+input CreateMovieInput {
+  id: ID
+  title: String!
+  year: Int!
+  description: String!
 }

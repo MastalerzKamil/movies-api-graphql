@@ -1,34 +1,38 @@
-movies-app-id=$(shell docker ps -a -q -f "name=movies-api")
+movies-app-id=$(shell docker ps -a -q -f "name=movies-app")
 movies-mongo-id=$(shell docker ps -a -q -f "name=movies-mongo")
 
 build-all:
-	@docker-compose -f docker-compose.yml build
+	@docker compose build
 
 up:
-	@docker-compose -f docker-compose.yml up -d
+	@docker compose  up -d
 
 stop-app:
 	@docker stop ${movies-app-id}
 
 stop:
-	@docker-compose stop
+	@docker compose stop
 
-rm-api:
+rm-movies-app:
 	@docker rm -f $(movies-app-id)
 
 rm-mongo:
 	@docker rm -f $(movies-mongo-id)
 
-rm-all: rm-movies-app rm-mongo
+down:
+	@docker compose down
 
-restart: stop run
+start:
+	@docker compose start
 
-rebuild: stop rm-all build-all run
+restart: stop up
+
+rebuild: stop down build-all up
 
 run-tests:
-	@docker exec -t movies-api-app /bin/sh -c 'yarn test'
+	@docker exec -t movies-app /bin/sh -c 'yarn test'
 
 attach-console:
-	@docker logs --since 30s -f $(movies-api-app-id)
+	@docker logs --since 30s -f $(movies-app-id)
 
 logs: attach-console
